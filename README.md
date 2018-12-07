@@ -1,2 +1,2 @@
 # dolmades-installer
-standalone offline installer for dolmades
+standalone installer for dolmades
