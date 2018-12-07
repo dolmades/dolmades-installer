@@ -18,12 +18,10 @@ INSTALLDIR=$(myyad --window-icon=$CURRENTDIR/dolmade.png --image=$CURRENTDIR/dol
 if [[ -d "$INSTALLDIR/dolmades-1.0" ]]; then
 	myyad --text "This version of dolmades is installed already! Please remove it first and try again" --wrap --button=gtk-ok
 	exit 1
-else
-	myyad --text "This version of dolmades isnnt installed already! Please remove it first and try again" --wrap --button=gtk-ok
 fi
+
 INSTALLDIR="$INSTALLDIR/dolmades-1.0"
-mkdir "$INSTALLDIR"
-cd "$INSTALLDIR"
+mkdir "$INSTALLDIR" && cd "$INSTALLDIR"
 
 echo "Copying files..."
 mv $CURRENTDIR/.dolmades "$INSTALLDIR/.dolmades"
@@ -31,7 +29,7 @@ mv $CURRENTDIR/dolmade.png "$INSTALLDIR/dolmade.png"
 mv $CURRENTDIR/dolmades-cli-1.0 "$INSTALLDIR/cli"
 
 echo "Patching config..."
-cat $INSTALLDIR/cli/config.py.orig | sed 's#DOLMADES_PATH = HOME + #DOLMADES_PATH = "'$INSTALLDIR'" + #' > cat $INSTALLDIR/cli/config.py
+cat "$INSTALLDIR/cli/config.py.orig" | sed 's#DOLMADES_PATH = HOME + #DOLMADES_PATH = "'$INSTALLDIR'" + #' > "$INSTALLDIR/cli/config.py"
 
 echo "Initializing dolmades..."
 "$INSTALLDIR"/cli/dolmades init
