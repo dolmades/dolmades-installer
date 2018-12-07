@@ -1,7 +1,5 @@
 #!/bin/bash
-CURRENTDIR=$PWD
-
-cd $HOME
+$PWD/dolmades-cli-1.0/udocker --repo="$CURRENTDIR/.dolmades/repo" create --name=dolmades-runtime dolmades/runtime:1.0
 
 RET=$($CURRENTDIR/dolmades-cli-1.0/dlg1.sh)
 
@@ -9,7 +7,7 @@ if [[ "x$RET" == "x" ]]; then
 	exit 1
 fi
 
-INSTALLDIR=$($CURRENTDIR/dolmades-cli-1.0/dlg2.sh)
+INSTALLDIR=$($PWD/dolmades-cli-1.0/dlg2.sh)
 
 if [[ -d "$INSTALLDIR/dolmades-1.0" ]]; then
 	$CURRENTDIR/dolmades-cli-1.0/dlg3.sh
@@ -24,10 +22,8 @@ INSTALLDIR="$INSTALLDIR/dolmades-1.0"
 mkdir "$INSTALLDIR" && cd "$INSTALLDIR"
 
 echo "Copying files..."
-mv $CURRENTDIR/dolmade.png "$INSTALLDIR/dolmade.png" && \
-mv $CURRENTDIR/dolmades-cli-1.0 "$INSTALLDIR/cli" && \
-rm -rf $CURRENTDIR/.dolmades/repo/containers/* && \
-mv $CURRENTDIR/.dolmades "$INSTALLDIR/.dolmades" 
+mv $PWD/dolmades-cli-1.0 "$INSTALLDIR/cli" && \
+mv $PWD/.dolmades "$INSTALLDIR/.dolmades" 
 
 echo "Patching config..."
 cat "$INSTALLDIR/cli/config.py.orig" | sed 's#DOLMADES_PATH = HOME + #DOLMADES_PATH = "'$INSTALLDIR'" + #' > "$INSTALLDIR/cli/config.py"
@@ -36,3 +32,4 @@ echo "Initializing dolmades..."
 "$INSTALLDIR"/cli/dolmades init
 
 echo "Done!"
+"$INSTALLDIR"/dolmades-cli-1.0/dlg5.sh
