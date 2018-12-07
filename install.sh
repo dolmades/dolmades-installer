@@ -23,6 +23,7 @@ mkdir "$INSTALLDIR"
 
 echo "Copying files..."
 mv $PWD/dolmades-cli-1.0 "$INSTALLDIR/cli" && \
+rm -rf $PWD/.dolmades/repo/containers && \
 mv $PWD/.dolmades "$INSTALLDIR/.dolmades" 
 
 echo "Patching config..."
