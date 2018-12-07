@@ -22,8 +22,8 @@ INSTALLDIR="$INSTALLDIR/dolmades-1.0"
 mkdir "$INSTALLDIR" 
 
 echo "Copying files..."
+$PWD/dolmades-cli-1.0/udocker --repo="$PWD/.dolmades/repo" rm dolmades-runtime && \
 mv $PWD/dolmades-cli-1.0 "$INSTALLDIR/cli" && \
-rm -rf $PWD/.dolmades/repo/containers && \
 mv $PWD/.dolmades "$INSTALLDIR/.dolmades" 
 
 echo "Patching config..."
