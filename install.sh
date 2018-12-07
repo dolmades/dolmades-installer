@@ -1,7 +1,7 @@
 #!/bin/bash
-$PWD/dolmades-cli-1.0/udocker --repo="$CURRENTDIR/.dolmades/repo" create --name=dolmades-runtime dolmades/runtime:1.0
+$PWD/dolmades-cli-1.0/udocker --repo="$PWD/.dolmades/repo" create --name=dolmades-runtime dolmades/runtime:1.0
 
-RET=$($CURRENTDIR/dolmades-cli-1.0/dlg1.sh)
+RET=$($PWD/dolmades-cli-1.0/dlg1.sh)
 
 if [[ "x$RET" == "x" ]]; then
 	exit 1
@@ -9,17 +9,17 @@ fi
 
 INSTALLDIR=$($PWD/dolmades-cli-1.0/dlg2.sh)
 
-if [[ -d "$INSTALLDIR/dolmades-1.0" ]]; then
-	$CURRENTDIR/dolmades-cli-1.0/dlg3.sh
-	exit 1
-fi
-
 if [[ "x$INSTALLDIR" == "x" ]]; then
         exit 1
 fi
 
+if [[ -d "$INSTALLDIR/dolmades-1.0" ]]; then
+	$PWD/dolmades-cli-1.0/dlg3.sh
+	exit 1
+fi
+
 INSTALLDIR="$INSTALLDIR/dolmades-1.0"
-mkdir "$INSTALLDIR" && cd "$INSTALLDIR"
+mkdir "$INSTALLDIR" 
 
 echo "Copying files..."
 mv $PWD/dolmades-cli-1.0 "$INSTALLDIR/cli" && \
@@ -32,4 +32,4 @@ echo "Initializing dolmades..."
 "$INSTALLDIR"/cli/dolmades init
 
 echo "Done!"
-"$INSTALLDIR"/dolmades-cli-1.0/dlg5.sh
+"$INSTALLDIR"/cli/dlg5.sh

@@ -3,7 +3,7 @@
 OWNDIR=`dirname "$(readlink -f "$0")"`
 cd $OWNDIR
 
-./udocker --quiet --repo="$PWD/../.dolmades/repo" run --user=$(whoami) --volume=$OWNDIR:/install --hostenv runtime sh -c \
+./udocker --quiet --repo="$PWD/../.dolmades/repo" run --user=$(whoami) --volume=$OWNDIR:/install --hostenv dolmades-runtime sh -c \
 'yad \
  --window-icon=/install/dolmade.png \
  --image=/install/dolmade.png \
