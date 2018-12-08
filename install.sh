@@ -30,6 +30,7 @@ echo "Patching config..."
 cat "$INSTALLDIR/cli/config.py.orig" | sed 's#DOLMADES_PATH = HOME + #DOLMADES_PATH = "'$INSTALLDIR'" + #' > "$INSTALLDIR/cli/config.py"
 
 echo "Initializing dolmades..."
+"$INSTALLDIR"/cli/xdg/install.sh
 "$INSTALLDIR"/cli/dolmades init
 
 echo "Done!"
