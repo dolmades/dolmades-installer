@@ -15,5 +15,6 @@ cd "$OWNDIR"
  --button=gtk-no:1 --button=gtk-yes:0'
 
 if [ "$?" -eq "0" ]; then
+	"$OWNDIR/xdg/uninstall.sh"
 	rm -rf "$OWNDIR/../"
 fi
