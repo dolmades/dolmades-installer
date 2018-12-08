@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Exec=cook
+Exec=./uninstall.sh
 Icon=dolmades-uninstall
 Name=Uninstall "The Goglizer"
 GenericName=Removes Dolmades and all installed Applications

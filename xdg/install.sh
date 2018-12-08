@@ -3,6 +3,9 @@
 OWNDIR=`dirname "$(readlink -f "$0")"`
 cd "$OWNDIR"
 
+echo "Path="`dirname "$(readlink -f "$OWNDIR"/../)"` >> dolmades-dolmades-the_goglizer.desktop
+echo "Path="`dirname "$(readlink -f "$OWNDIR"/../)"` >> dolmades-dolmades-uninstall.desktop
+
 xdg-desktop-menu install \
  dolmades-dolmades.directory \
  dolmades-dolmades-the_goglizer.desktop \

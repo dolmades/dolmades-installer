@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Exec=cook
+Exec=./dolmades-wrapper.sh
 Icon=dolmades-menu
 Name=The Goglizer
 GenericName=Dolmades - Win Apps under Linux
