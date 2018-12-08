@@ -1,7 +1,7 @@
 #!/bin/sh
 
 OWNDIR=`dirname "$(readlink -f "$0")"`
-cd $OWNDIR
+cd "$OWNDIR"
 
 ./udocker --quiet --repo="$PWD/../.dolmades/repo" run --user=$(whoami) --bindhome --volume=$OWNDIR:/install --hostenv dolmades-runtime sh -c \
 'cd "'$HOME'" && yad \
