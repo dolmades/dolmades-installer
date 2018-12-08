@@ -1,4 +1,8 @@
 #!/bin/sh
+
+OWNDIR=`dirname "$(readlink -f "$0")"`
+cd "$OWNDIR"
+
 xdg-desktop-menu install \
  dolmades-dolmades.directory \
  dolmades-dolmades-the_goglizer.desktop \

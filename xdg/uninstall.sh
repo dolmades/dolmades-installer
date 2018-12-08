@@ -1,5 +1,8 @@
 #!/bin/sh
 
+OWNDIR=`dirname "$(readlink -f "$0")"`
+cd "$OWNDIR"
+
 xdg-icon-resource uninstall --size 64 dolmades-dolmade-64.png dolmades-menu
 xdg-icon-resource uninstall --size 22 dolmades-dolmade-22.png dolmades-menu
 xdg-icon-resource uninstall --size 64 dolmades-remove-64.png dolmades-uninstall
