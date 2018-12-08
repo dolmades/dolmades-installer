@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=cook
+Icon=dolmades-ingredient
+Name=Ingredients
+GenericName=Add/Remove Ingredients
+Comment=Add/Remove Ingredients
