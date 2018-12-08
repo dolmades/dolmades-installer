@@ -26,6 +26,10 @@ function prepare_payload() {
 	cp $OLDDIR/dolmade.png $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/dolmade.png
 	cp $OLDDIR/dlg?.sh $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/
 	chmod +x $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/dlg?.sh
+	cp $OLDDIR/{uninstall.sh,dolmades-wrapper.sh} $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/
+	chmod +x $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/{uninstall.sh,dolmades-wrapper.sh}
+	cp -r $OLDDIR/xdg $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/
+	chmod +x $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/xdg/{install.sh,uninstall.sh}
 }
 
 rm -rf $PAYLOAD
