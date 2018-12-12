@@ -1,4 +1,5 @@
 #!/bin/bash
+$PWD/dolmades-cli-1.0/udocker install --force
 $PWD/dolmades-cli-1.0/udocker --repo="$PWD/.dolmades/repo" create --name=dolmades-runtime dolmades/runtime:1.0
 
 RET=$($PWD/dolmades-cli-1.0/dlg1.sh)

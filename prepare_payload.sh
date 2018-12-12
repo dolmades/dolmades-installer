@@ -12,6 +12,7 @@ function prepare_payload() {
 	sed -i.orig 's#HOME = .*$#HOME = "'$PAYLOAD'"#' $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/config.py
 	cd dolmades-cli-$DOLMADES_VERSION/
 	mkdir -p $PAYLOAD/.dolmades
+	./udocker install --force
 	./udocker mkrepo $PAYLOAD/.dolmades/repo
 	echo "Pulling images..."
 	START=$(date +%s.%N)
@@ -30,6 +31,7 @@ function prepare_payload() {
 	chmod +x $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/{uninstall.sh,dolmades-wrapper.sh}
 	cp -r $OLDDIR/xdg $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/
 	chmod +x $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/xdg/{install.sh,uninstall.sh}
+	./udocker install --purge
 }
 
 rm -rf $PAYLOAD
