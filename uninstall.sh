@@ -16,6 +16,6 @@ cd "$OWNDIR"
 
 if [ "$?" -eq "0" ]; then
 	"$OWNDIR/xdg/uninstall.sh"
-	"$OWNDIR/udocker install --purge
+	rm -rf $HOME/.udocker
 	rm -rf `readlink -f "$OWNDIR/../"`
 fi

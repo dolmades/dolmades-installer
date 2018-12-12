@@ -31,7 +31,7 @@ function prepare_payload() {
 	chmod +x $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/{uninstall.sh,dolmades-wrapper.sh}
 	cp -r $OLDDIR/xdg $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/
 	chmod +x $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/xdg/{install.sh,uninstall.sh}
-	./udocker install --purge
+	rm -rf $HOME/.udocker
 }
 
 rm -rf $PAYLOAD
