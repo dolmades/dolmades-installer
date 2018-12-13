@@ -3,7 +3,7 @@
 DOLMADES_VERSION="1.0"
 OLDDIR=$PWD
 PAYLOAD=$PWD/payload
-export UDOCKER_DIR=$PAYLOAD/.dolmades/
+export UDOCKER_DIR="$PAYLOAD/.dolmades/"
 
 function prepare_payload() {
 	mkdir -p $PAYLOAD
@@ -12,7 +12,6 @@ function prepare_payload() {
 	tar -xzf dolmades.tgz
 	sed -i.orig 's#HOME = .*$#HOME = "'$PAYLOAD'"#' $PAYLOAD/dolmades-cli-$DOLMADES_VERSION/config.py
 	cd dolmades-cli-$DOLMADES_VERSION/
-	mkdir -p $PAYLOAD/.dolmades
 	./udocker install --force
 	echo "Pulling images..."
 	START=$(date +%s.%N)
