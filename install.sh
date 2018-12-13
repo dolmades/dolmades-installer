@@ -1,6 +1,6 @@
 #!/bin/bash
-$PWD/dolmades-cli-1.0/udocker install --force
-$PWD/dolmades-cli-1.0/udocker --repo="$PWD/.dolmades/repo" create --name=dolmades-runtime dolmades/runtime:1.0
+UDOCKER_DIR=$PWD/.dolmades/ $PWD/dolmades-cli-1.0/udocker install --force
+UDOCKER_DIR=$PWD/.dolmades/ $PWD/dolmades-cli-1.0/udocker create --name=dolmades-runtime dolmades/runtime:1.0
 
 RET=$($PWD/dolmades-cli-1.0/dlg1.sh)
 
@@ -23,7 +23,7 @@ INSTALLDIR="$INSTALLDIR/dolmades-1.0"
 mkdir "$INSTALLDIR" 
 
 echo "Copying files..."
-$PWD/dolmades-cli-1.0/udocker --repo="$PWD/.dolmades/repo" rm dolmades-runtime && \
+#$PWD/dolmades-cli-1.0/udocker rm dolmades-runtime && \
 mv $PWD/dolmades-cli-1.0 "$INSTALLDIR/cli" && \
 mv $PWD/.dolmades "$INSTALLDIR/.dolmades" 
 
@@ -32,7 +32,6 @@ cat "$INSTALLDIR/cli/config.py.orig" | sed 's#DOLMADES_PATH = HOME + #DOLMADES_P
 
 echo "Initializing dolmades..."
 "$INSTALLDIR"/cli/xdg/install.sh
-"$INSTALLDIR"/cli/dolmades init
 
 echo "Done!"
 "$INSTALLDIR"/cli/dlg5.sh
